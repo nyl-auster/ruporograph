@@ -2,13 +2,11 @@ use ctx::Ctx;
 use r2d2_postgres::{PostgresConnectionManager, TlsMode};
 use std::collections::HashMap;
 
-/**
- * Permet de se connecter à notre base de données Postgres
- *
- * On utilise un "pool de connexion" qui pourra être partagé par
- * les différents threads au lieu d'une connexion unique ou d'ouvrir
- * une nouvelle connexion systématiquement.
- */
+/// Permet de se connecter à notre base de données Postgres
+///
+/// On utilise un "pool de connexion" qui pourra être partagé par
+/// les différents threads au lieu d'une connexion unique ou d'ouvrir
+/// une nouvelle connexion systématiquement.
 pub fn db_pool(
   config: &HashMap<String, String>,
 ) -> r2d2::Pool<r2d2_postgres::PostgresConnectionManager> {

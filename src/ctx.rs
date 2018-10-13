@@ -16,5 +16,5 @@ impl Ctx {
 // permettre à notre structure Ctx d'être un context valide
 // pour Juniper ( la librairie GraphQL).
 // Notre contexte sera alors accessible depuis
-// 'nimporte quel resolver avec  "executor.context()"
+// n'importe quel resolver avec "executor.context()"
 impl juniper::Context for Ctx {}

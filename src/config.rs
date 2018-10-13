@@ -2,9 +2,9 @@ use rs_config::*;
 use std::collections::HashMap;
 use std::path::Path;
 
-/// Récupèrer la configuration depuis le fichier `App.toml`
-/// pour la configuration par défaut. Si un fichier `App.local.toml`
-/// est trouvé, ses valeurs écraserons celles par défault
+/// Récupère la configuration du fichier `App.toml`
+/// Si un fichier `App.local.toml` est trouvé, ses valeurs
+/// écrasent celle de `App.toml`
 pub fn get() -> HashMap<String, String> {
   let mut settings = Config::default();
   settings.merge(File::with_name("App.toml")).unwrap();

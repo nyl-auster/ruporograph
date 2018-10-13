@@ -1,7 +1,7 @@
 #![feature(plugin)]
 #![feature(trace_macros)]
 #![plugin(rocket_codegen)]
-extern crate config as rs_config; // alias, car sinon conflit avec "mod config;" ci-dessous
+extern crate config as rs_config; // alias, sinon conflit avec notre "mod config;"
 extern crate postgres;
 extern crate toml;
 #[macro_use]
