@@ -9,11 +9,13 @@ pub struct User {
 
 pub fn get_user_by_id(ctx: &Ctx, id: i32) -> Option<User> {
   let mut result = None;
-  let connect = ctx.db_pool.get().unwrap();
-  for row in &connect
+  for row in &ctx
+    .db_connect()
     .query("SELECT id, name, mail FROM users WHERE id = $1", &[&id])
-    .expect(&format!("erreur en cherchant l'utilisateur {:#?}", &id))
-  {
+    .expect(&format!(
+      "erreur en cherchant l'utilisateur avec l'id {:#?}",
+      &id
+    )) {
     result = Some(User {
       id: Some(row.get("id")),
       name: row.get("name"),
@@ -24,8 +26,8 @@ pub fn get_user_by_id(ctx: &Ctx, id: i32) -> Option<User> {
 }
 
 pub fn insert_user(ctx: &Ctx, user: &User) -> Result<u64, String> {
-  let connect = ctx.db_pool.get().unwrap();
-  let rows_affected = connect
+  let rows_affected = ctx
+    .db_connect()
     .execute(
       "INSERT INTO users (name, mail) VALUES ($1, $2)",
       &[&user.name, &user.mail],

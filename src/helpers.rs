@@ -22,6 +22,13 @@ pub struct Ctx {
 // 'nimporte quel resolver avec  "executor.context()"
 impl juniper::Context for Ctx {}
 
+impl Ctx {
+  // helper to get a connection to dabatabase from our pool
+  pub fn db_connect(&self) -> r2d2::PooledConnection<r2d2_postgres::PostgresConnectionManager> {
+    self.db_pool.get().unwrap()
+  }
+}
+
 // Initialiser le contexte de notre application
 pub fn ctx_init() -> Ctx {
   let config = get_config();
