@@ -1,4 +1,4 @@
-#RUST + POSTGRES + GRAPHQL ( Work in progress )
+# RUST + POSTGRES + GRAPHQL ( Work in progress )
 
 I'm a noob in Rust 🤘 and this is only a "proof of concept", do not use as it is in production 😱
 
