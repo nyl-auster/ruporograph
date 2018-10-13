@@ -2,5 +2,5 @@
 **/*.rs.bk
 .vscode
 logfile
-App.local.toml
+Config.local.toml
 Rocket.toml
