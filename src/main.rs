@@ -1,7 +1,7 @@
 #![feature(plugin)]
 #![feature(trace_macros)]
 #![plugin(rocket_codegen)]
-extern crate config;
+extern crate config as rs_config; // alias, car sinon conflit avec "mod config;" ci-dessous
 extern crate postgres;
 extern crate toml;
 #[macro_use]
@@ -10,16 +10,21 @@ extern crate juniper_rocket;
 extern crate r2d2;
 extern crate r2d2_postgres;
 extern crate rocket;
+mod config;
+mod ctx;
 mod database;
 mod graphql;
-mod helpers;
 mod routes;
 mod user;
 
 fn main() {
-  let ctx = helpers::ctx_init();
+  let config = config::get();
+  let ctx = ctx::Ctx {
+    db_pool: database::db_pool(&config),
+    config: config,
+  };
 
-  // créer une table "users".
+  // créer une table "users" de démo.
   database::uninstall(&ctx);
   database::install(&ctx);
 

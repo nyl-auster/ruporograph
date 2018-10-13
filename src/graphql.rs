@@ -1,4 +1,4 @@
-use helpers::Ctx;
+use ctx::Ctx;
 use user::{get_user_by_id, insert_user, User};
 use juniper::{FieldError, Value};
 

@@ -1,6 +1,6 @@
 // HttpRequest -> Graphql Type
+use ctx::Ctx;
 use graphql::Schema;
-use helpers::Ctx;
 use rocket::response::content;
 use rocket::State;
 
