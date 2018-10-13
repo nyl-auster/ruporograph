@@ -1,4 +1,4 @@
-use app::Ctx;
+use helpers::Ctx;
 
 #[derive(Debug)]
 pub struct User {

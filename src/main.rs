@@ -10,19 +10,25 @@ extern crate juniper_rocket;
 extern crate r2d2;
 extern crate r2d2_postgres;
 extern crate rocket;
-mod app;
-mod business;
+mod database;
 mod graphql;
-mod migrations;
-mod router;
+mod helpers;
+mod routes;
+mod user;
 
 fn main() {
-  let ctx = app::ctx_init();
-  migrations::release_0::install::run(&ctx);
+  let ctx = helpers::ctx_init();
+  database::install(&ctx);
   rocket::ignite()
     .manage(ctx)
     .manage(graphql::build_schema())
-    .mount("/", router::routes())
-    .catch(router::catchers())
+    .mount(
+      "/",
+      routes![
+        routes::post_graphql_handler,
+        routes::get_graphql_handler,
+        routes::graphiql,
+      ],
+    )
     .launch();
 }

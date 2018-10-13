@@ -1,16 +1,6 @@
 use config::*;
-use r2d2_postgres::{PostgresConnectionManager, TlsMode};
 use std::collections::HashMap;
 use std::path::Path;
-
-pub fn db_pool(
-  config: &HashMap<String, String>,
-) -> r2d2::Pool<r2d2_postgres::PostgresConnectionManager> {
-  let dabatabase_uri = config.get("database_uri").unwrap().as_str();
-  let manager = PostgresConnectionManager::new(dabatabase_uri, TlsMode::None).unwrap();
-  let pool = r2d2::Pool::new(manager).unwrap();
-  pool
-}
 
 pub fn get_config() -> HashMap<String, String> {
   let mut settings = Config::default();

@@ -1,7 +1,14 @@
-# RUST + POSTGRES + GRAPHQL ( Work in progress )
+# Serveur GraphQL avec Rust ( Travail en cours )
 
-I'm a noob in Rust 🤘 and this is only a "proof of concept", do not use as it is in production 😱
+Je suis un noob en Rust 🤘 Ceci est une expérimentation 🔬 N'utilisez pas ça en production 😱
+
+Ce serveur fait la glue entre les librairies suivantes :
+
+- [postgres](https://github.com/sfackler/rust-postgres) pour la base de données
+- [rocket](https://rocket.rs/) pour la gestion des requêtes http
+- [Juniper](https://github.com/graphql-rust/juniper) pour créer le schéma GraphQL
 
 ## Getting started
 
-Rust nightly 1.31.0-nightly is **required**
+- installer Rust en `1.31.0-nightly`
+- installer postgres
