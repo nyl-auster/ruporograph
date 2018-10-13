@@ -2,17 +2,30 @@ use helpers::Ctx;
 use r2d2_postgres::{PostgresConnectionManager, TlsMode};
 use std::collections::HashMap;
 
+/**
+ * Permet de se connecter à notre base de données Postgres
+ *
+ * On utilise un "pool de connexion" qui pourra être partagé par
+ * les différents threads au lieu d'une connexion unique ou d'ouvrir
+ * une nouvelle connexion systématiquement.
+ */
 pub fn db_pool(
   config: &HashMap<String, String>,
 ) -> r2d2::Pool<r2d2_postgres::PostgresConnectionManager> {
   let dabatabase_uri = config.get("database_uri").unwrap().as_str();
+  println!(
+    "🔍  Tentative de connexion à la base \"{}\" en cours ...",
+    &dabatabase_uri
+  );
   let manager = PostgresConnectionManager::new(dabatabase_uri, TlsMode::None).unwrap();
-  let pool = r2d2::Pool::new(manager).unwrap();
+  let pool = r2d2::Pool::new(manager).expect("Impossible de se connecter à la base de données !");
+  println!("🎉  Connexion à la base réussie !");
   pool
 }
 
+// créer la table users
 pub fn install(ctx: &Ctx) {
-  println!("création de la table users");
+  println!("✨  Création de la table users");
   let connect = ctx.db_pool.get().unwrap();
   connect
     .execute(
@@ -24,29 +37,14 @@ pub fn install(ctx: &Ctx) {
       &[],
     )
     .expect("erreur en créant la table users");
-
-  println!("création de la table test");
-  let connect = ctx.db_pool.get().unwrap();
-  connect
-    .execute(
-      "CREATE TABLE test (
-    id  SERIAL PRIMARY KEY,
-    name  VARCHAR NOT NULL
-    )",
-      &[],
-    )
-    .expect("erreur en créant la table test");
 }
 
+// supprimer la table users
+#[allow(dead_code)]
 pub fn uninstall(ctx: &Ctx) {
   let connect = ctx.db_pool.get().unwrap();
-  println!("suppression de la table users");
+  println!("🗑️ suppression de la table users, si elle existe.");
   connect
     .execute("DROP TABLE IF EXISTS users", &[])
     .expect("erreur en supprimant la table users");
-
-  println!("suppression de la table test");
-  connect
-    .execute("DROP TABLE IF EXISTS test", &[])
-    .expect("erreur en supprimant la table test");
 }

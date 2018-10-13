@@ -18,7 +18,12 @@ mod user;
 
 fn main() {
   let ctx = helpers::ctx_init();
+
+  // créer une table "users".
+  database::uninstall(&ctx);
   database::install(&ctx);
+
+  // lancer le serveur web
   rocket::ignite()
     .manage(ctx)
     .manage(graphql::build_schema())
