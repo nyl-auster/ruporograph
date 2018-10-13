@@ -1,4 +1,4 @@
-# Exemple de serveur web en Rust avec GraphQL et Postgres ( POC )
+# Exemple de serveur web en Rust avec GraphQL et Postgres (POC)
 
 Je suis un noob en Rust 🤘 N'utilisez pas ça en production 😱
 
