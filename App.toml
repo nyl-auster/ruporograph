@@ -1,1 +1,1 @@
-database_uri = "postgres://yann@localhost:5432/rust_cms"
+database_uri = "postgres://user@localhost:5432/example"
