@@ -1,6 +1,6 @@
 # Serveur GraphQL avec Rust ( Travail en cours )
 
-Ceci est une expérimentation pour créer un serveur web avec GraphQL et Rust 🔬 Je suis un noob en Rust 🤘 N'utilisez pas ça en production 😱
+Ceci est une expérimentation pour créer un serveur web avec GraphQL et Rust. Je suis un noob en Rust 🤘 N'utilisez pas ça en production 😱
 
 Ce serveur fait la glue entre les librairies suivantes :
 
