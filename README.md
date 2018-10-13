@@ -1,6 +1,6 @@
 # Serveur GraphQL avec Rust ( Travail en cours )
 
-Je suis un noob en Rust 🤘 Ceci est une expérimentation 🔬 N'utilisez pas ça en production 😱
+Ceci est une expérimentation pour créer un serveur web avec GraphQL et Rust 🔬 Je suis un noob en Rust 🤘 N'utilisez pas ça en production 😱
 
 Ce serveur fait la glue entre les librairies suivantes :
 
@@ -13,4 +13,5 @@ Ce serveur fait la glue entre les librairies suivantes :
 - installer Rust en `1.31.0-nightly`
 - installer postgres
 - créer une base de donnée
-- mettre à jour le fichier `src/config.toml` avec l'adresse de la base de données
+- mettre à jour le fichier `src/config.toml` avec l'adresse de la base de données crée
+- `cargo run`

@@ -36,14 +36,14 @@ pub fn install(ctx: &Ctx) {
     )",
       &[],
     )
-    .expect("erreur en créant la table users");
+    .expect("Erreur en créant la table users");
 }
 
 // supprimer la table users
 #[allow(dead_code)]
 pub fn uninstall(ctx: &Ctx) {
   let connect = ctx.db_pool.get().unwrap();
-  println!("🗑️ suppression de la table users, si elle existe.");
+  println!("🗑️   Suppression de la base de données users");
   connect
     .execute("DROP TABLE IF EXISTS users", &[])
     .expect("erreur en supprimant la table users");
