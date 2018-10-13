@@ -1,6 +1,6 @@
-# Serveur GraphQL avec Rust ( Travail en cours )
+# Exemple de serveur web en Rust avec GraphQL et Postgres ( POC )
 
-Un exemple de serveur web en Rust avec GraphQL et Postgres. Je suis un noob en Rust 🤘 N'utilisez pas ça en production 😱
+Je suis un noob en Rust 🤘 N'utilisez pas ça en production 😱
 
 Ce serveur fait la glue entre les librairies suivantes :
 
